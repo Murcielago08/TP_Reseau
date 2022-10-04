@@ -22,6 +22,8 @@
   - [1. DHCP](#1-dhcp)
   - [2. DNS](#2-dns)
 - [IV. Wireshark](#iv-wireshark)
+  - [1. Intro Wireshark](#1-intro-wireshark)
+  - [2. Bonus : avant-goût TCP et UDP](#2-bonus--avant-goût-tcp-et-udp)
 - [Bilan](#bilan)
 
 # Déroulement et rendu du TP
@@ -593,6 +595,9 @@ Un peu austère aux premiers abords, une manipulation très basique permet d'avo
 ➜ **[Téléchargez l'outil Wireshark](https://www.wireshark.org/).**
 
 🌞 Utilisez le pour observer les trames qui circulent entre vos deux carte Ethernet. Mettez en évidence :
+
+![](https://i.imgur.com/Jf0ruLA.png)
+![](https://i.imgur.com/5bHn67p.png)
 
 - un `ping` entre vous et votre passerelle
 - un `netcat` entre vous et votre mate, branché en RJ45
