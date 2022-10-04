@@ -627,6 +627,10 @@ TCP et UDP ce sont les deux protocoles qui utilisent des ports. Si on veut accé
 
 🌞 **Wireshark it**
 
+```
+
+```
+
 - déterminez à quelle IP et quel port votre PC se connecte quand vous regardez une vidéo Youtube
   - il sera sûrement plus simple de repérer le trafic Youtube en fermant tous les autres onglets et toutes les autres applications utilisant du réseau
 
