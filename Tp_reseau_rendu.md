@@ -24,7 +24,6 @@
 - [IV. Wireshark](#iv-wireshark)
   - [1. Intro Wireshark](#1-intro-wireshark)
   - [2. Bonus : avant-goût TCP et UDP](#2-bonus--avant-goût-tcp-et-udp)
-- [Bilan](#bilan)
 
 # Déroulement et rendu du TP
 
@@ -597,13 +596,13 @@ Un peu austère aux premiers abords, une manipulation très basique permet d'avo
 
 🌞 Utilisez le pour observer les trames qui circulent entre vos deux carte Ethernet. Mettez en évidence :
 
+- un `ping` entre vous et votre passerelle
 ![](https://i.imgur.com/Jf0ruLA.png)
+- un `netcat` entre vous et votre mate, branché en RJ45
 ![](https://i.imgur.com/5bHn67p.png)
+- une requête DNS. Identifiez dans la capture le serveur DNS à qui vous posez la question.
 ![](https://i.imgur.com/50r8I5y.png)
 
-- un `ping` entre vous et votre passerelle
-- un `netcat` entre vous et votre mate, branché en RJ45
-- une requête DNS. Identifiez dans la capture le serveur DNS à qui vous posez la question.
 - prenez moi des screens des trames en question
 - on va prendre l'habitude d'utiliser Wireshark souvent dans les cours, pour visualiser ce qu'il se passe
 
@@ -632,32 +631,4 @@ TCP et UDP ce sont les deux protocoles qui utilisent des ports. Si on veut accé
 
 - déterminez à quelle IP et quel port votre PC se connecte quand vous regardez une vidéo Youtube
 ![](https://i.imgur.com/KKzfvyw.png)
-
-# Bilan
-
-**Vu pendant le TP :**
-
-- visualisation de vos interfaces réseau (en GUI et en CLI)
-- extraction des informations IP
-  - adresse IP et masque
-  - calcul autour de IP : adresse de réseau, etc.
-- connaissances autour de/aperçu de :
-  - un outil de diagnostic simple : `ping`
-  - un outil de scan réseau : `nmap`
-  - un outil qui permet d'établir des connexions "simples" (on y reviendra) : `netcat`
-  - un outil pour faire des requêtes DNS : `nslookup` ou `dig`
-  - un outil d'analyse de trafic : `wireshark`
-- manipulation simple de vos firewalls
-
-**Conclusion :**
-
-- Pour permettre à un ordinateur d'être connecté en réseau, il lui faut **une liaison physique** (par câble ou par *WiFi*).  
-- Pour réceptionner ce lien physique, l'ordinateur a besoin d'**une carte réseau**. La carte réseau porte une adresse MAC  
-- **Pour être membre d'un réseau particulier, une carte réseau peut porter une adresse IP.**
-Si deux ordinateurs reliés physiquement possèdent une adresse IP dans le même réseau, alors ils peuvent communiquer.  
-- **Un ordintateur qui possède plusieurs cartes réseau** peut réceptionner du trafic sur l'une d'entre elles, et le balancer sur l'autre, servant ainsi de "pivot". Cet ordinateur **est appelé routeur**.
-- Il existe dans la plupart des réseaux, certains équipements ayant un rôle particulier :
-  - un équipement appelé *passerelle*. C'est un routeur, et il nous permet de sortir du réseau actuel, pour en joindre un autre, comme Internet par exemple
-  - un équipement qui agit comme **serveur DNS** : il nous permet de connaître les IP derrière des noms de domaine
-  - un équipement qui agit comme **serveur DHCP** : il donne automatiquement des IP aux clients qui rejoigne le réseau
-  - **chez vous, c'est votre Box qui fait les trois :)**
+(pas sur de ça x))
