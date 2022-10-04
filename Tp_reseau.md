@@ -598,6 +598,7 @@ Un peu austère aux premiers abords, une manipulation très basique permet d'avo
 
 ![](https://i.imgur.com/Jf0ruLA.png)
 ![](https://i.imgur.com/5bHn67p.png)
+![](https://i.imgur.com/50r8I5y.png)
 
 - un `ping` entre vous et votre passerelle
 - un `netcat` entre vous et votre mate, branché en RJ45
