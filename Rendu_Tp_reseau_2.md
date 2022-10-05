@@ -63,22 +63,58 @@ Le lab, il vous faut deux machines :
   - l'adresse de broadcast
 - vous renseignerez aussi les commandes utilisées pour définir les adresses IP *via* la ligne de commande
 
+```
+adresse client :
+C:\Windows\system32> netsh interface ipv4 set address name="Ethernet" static 192.168.26.51 255.255.252.0 192.168.26.50
+
+adresse serveur :
+C:\Windows\system32> netsh interface ipv4 set address name="Ethernet" static 192.168.26.50 255.255.252.0
+
+C:\Windows\system32> ipconfig /all
+Carte Ethernet Ethernet :
+
+   Adresse IPv4. . . . . . . . . . . . . .: 192.168.26.50(préféré)
+   Masque de sous-réseau. . . . . . . . . : 255.255.252.0
+   Passerelle par défaut. . . . . . . . . :
+
+adr : 192.168.24.0
+adb : 192.168.27.255
+```
+
 > Rappel : tout doit être fait *via* la ligne de commandes. Faites-vous du bien, et utilisez Powershell plutôt que l'antique cmd sous Windows svp.
 
 🌞 **Prouvez que la connexion est fonctionnelle entre les deux machines**
 
 - un `ping` suffit !
 
+```
+C:\Windows\system32> ping 192.168.26.51
+
+Envoi d’une requête 'Ping'  192.168.26.51 avec 32 octets de données :
+Réponse de 192.168.26.51 : octets=32 temps=2 ms TTL=128
+Réponse de 192.168.26.51 : octets=32 temps=2 ms TTL=128
+Réponse de 192.168.26.51 : octets=32 temps=2 ms TTL=128
+Réponse de 192.168.26.51 : octets=32 temps=2 ms TTL=128
+
+Statistiques Ping pour 192.168.26.51:
+    Paquets : envoyés = 4, reçus = 4, perdus = 0 (perte 0%),
+```
+
 🌞 **Wireshark it**
 
 - `ping` ça envoie des paquets de type ICMP (c'est pas de l'IP, c'est un de ses frères)
   - les paquets ICMP sont encapsulés dans des trames Ethernet, comme les paquets IP
   - il existe plusieurs types de paquets ICMP, qui servent à faire des trucs différents
+
+
+
 - **déterminez, grâce à Wireshark, quel type de paquet ICMP est envoyé par `ping`**
   - pour le ping que vous envoyez
   - et le pong que vous recevez en retour
-
-> Vous trouverez sur [la page Wikipedia de ICMP](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol) un tableau qui répertorie tous les types ICMP et leur utilité
+```
+type du ping request : type 8 echo request
+type du ping reply : type 0 echo reply 
+```
 
 🦈 **PCAP qui contient les paquets ICMP qui vous ont permis d'identifier les types ICMP**
 
