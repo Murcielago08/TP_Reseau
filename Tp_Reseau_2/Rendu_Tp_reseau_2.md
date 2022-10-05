@@ -106,11 +106,12 @@ Statistiques Ping pour 192.168.26.51:
   - les paquets ICMP sont encapsulés dans des trames Ethernet, comme les paquets IP
   - il existe plusieurs types de paquets ICMP, qui servent à faire des trucs différents
 
-
+[Ping-Pong wireshark](./ping_tp2_reseau.pcapng)
 
 - **déterminez, grâce à Wireshark, quel type de paquet ICMP est envoyé par `ping`**
   - pour le ping que vous envoyez
   - et le pong que vous recevez en retour
+  - 
 ```
 type du ping request : type 8 echo request
 type du ping reply : type 0 echo reply 
