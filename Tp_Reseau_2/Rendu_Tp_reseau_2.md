@@ -106,7 +106,7 @@ Statistiques Ping pour 192.168.26.51:
   - les paquets ICMP sont encapsulés dans des trames Ethernet, comme les paquets IP
   - il existe plusieurs types de paquets ICMP, qui servent à faire des trucs différents
 
-[Ping-Pong wireshark](./ping_tp2_reseau.pcapng)
+[Ping-Pong Wireshark](./ping_tp2_reseau.pcapng)
 
 - **déterminez, grâce à Wireshark, quel type de paquet ICMP est envoyé par `ping`**
   - pour le ping que vous envoyez
@@ -135,19 +135,68 @@ ARP permet, pour rappel, de résoudre la situation suivante :
 
 - utilisez une commande pour afficher votre table ARP
 - déterminez la MAC de votre binome depuis votre table ARP
+```
+C:\Users\darkj> arp -a
+
+Interface : 192.168.26.50 --- 0x5
+  Adresse Internet      Adresse physique      Type
+  192.168.26.51         b4-45-06-a4-5c-76     dynamique
+```
+
 - déterminez la MAC de la *gateway* de votre réseau
   - celle de votre réseau physique, WiFi, genre YNOV, car il n'y en a pas dans votre ptit LAN
   - c'est juste pour vous faire manipuler un peu encore :)
-
-> Il peut être utile de ré-effectuer des `ping` avant d'afficher la table ARP. En effet : les infos stockées dans la table ARP ne sont stockées que temporairement. Ce laps de temps est de l'ordre de ~60 secondes sur la plupart de nos machines.
+```
+C:\Users\darkj> arp -a
+Interface : 10.33.16.168 --- 0xd
+  Adresse Internet      Adresse physique      Type
+  10.33.19.254          00-c0-e7-e0-04-4e     dynamique
+```
 
 🌞 **Manipuler la table ARP**
 
 - utilisez une commande pour vider votre table ARP
 - prouvez que ça fonctionne en l'affichant et en constatant les changements
-- ré-effectuez des pings, et constatez la ré-apparition des données dans la table ARP
+```
+C:\Windows\system32> arp -d
+C:\Windows\system32> arp -a
 
-> Les échanges ARP sont effectuées automatiquement par votre machine lorsqu'elle essaie de joindre une machine sur le même LAN qu'elle. Si la MAC du destinataire n'est pas déjà dans la table ARP, alors un échange ARP sera déclenché.
+Interface : 192.168.220.1 --- 0x3
+  Adresse Internet      Adresse physique      Type
+  224.0.0.22            01-00-5e-00-00-16     statique
+
+Interface : 192.168.26.50 --- 0x5
+  Adresse Internet      Adresse physique      Type
+  224.0.0.22            01-00-5e-00-00-16     statique
+  255.255.255.255       ff-ff-ff-ff-ff-ff     statique
+
+Interface : 192.168.94.1 --- 0x6
+  Adresse Internet      Adresse physique      Type
+  224.0.0.22            01-00-5e-00-00-16     statique
+  224.0.2.60            01-00-5e-00-02-3c     statique
+
+Interface : 10.33.16.168 --- 0xd
+  Adresse Internet      Adresse physique      Type
+  10.33.19.254          00-c0-e7-e0-04-4e     dynamique
+  224.0.0.22            01-00-5e-00-00-16     statique
+  255.255.255.255       ff-ff-ff-ff-ff-ff     statique
+```
+- ré-effectuez des pings, et constatez la ré-apparition des données dans la table ARP
+```
+C:\Windows\system32> arp -a
+
+Interface : 192.168.26.50 --- 0x5
+  Adresse Internet      Adresse physique      Type
+  192.168.26.51         b4-45-06-a4-5c-76     dynamique
+  224.0.0.22            01-00-5e-00-00-16     statique
+  255.255.255.255       ff-ff-ff-ff-ff-ff     statique
+
+Interface : 10.33.16.168 --- 0xd
+  Adresse Internet      Adresse physique      Type
+  10.33.19.254          00-c0-e7-e0-04-4e     dynamique
+  224.0.0.22            01-00-5e-00-00-16     statique
+  255.255.255.255       ff-ff-ff-ff-ff-ff     statique
+```
 
 🌞 **Wireshark it**
 
@@ -155,6 +204,8 @@ ARP permet, pour rappel, de résoudre la situation suivante :
 - mettez en évidence les deux trames ARP échangées lorsque vous essayez de contacter quelqu'un pour la "première" fois
   - déterminez, pour les deux trames, les adresses source et destination
   - déterminez à quoi correspond chacune de ces adresses
+
+[Arp Wireshark](./arp_tp2_reseau.pcapng)
 
 🦈 **PCAP qui contient les trames ARP**
 
