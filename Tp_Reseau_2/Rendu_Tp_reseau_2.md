@@ -13,46 +13,11 @@ Dans ce TP on va approfondir trois protocoles, qu'on a survolé jusqu'alors :
 
 - [TP2 : Ethernet, IP, et ARP](#tp2--ethernet-ip-et-arp)
 - [Sommaire](#sommaire)
-- [0. Prérequis](#0-prérequis)
 - [I. Setup IP](#i-setup-ip)
 - [II. ARP my bro](#ii-arp-my-bro)
 - [III. DHCP you too my brooo](#iii-dhcp-you-too-my-brooo)
 
-# 0. Prérequis
-
-**Il vous faudra deux machines**, vous êtes libres :
-
-- toujours possible de se connecter à deux avec un câble
-- sinon, votre PC + une VM ça fait le taf, c'est pareil
-  - je peux aider sur le setup, comme d'hab
-
-> Je conseille à tous les gens qui n'ont pas de port RJ45 de go PC + VM pour faire vous-mêmes les manips, mais on fait au plus simple hein.
-
----
-
-**Toutes les manipulations devront être effectuées depuis la ligne de commande.** Donc normalement, plus de screens.
-
-**Pour Wireshark, c'est pareil,** NO SCREENS. La marche à suivre :
-
-- vous capturez le trafic que vous avez à capturer
-- vous stoppez la capture (bouton carré rouge en haut à gauche)
-- vous sélectionnez les paquets/trames intéressants (CTRL + clic)
-- File > Export Specified Packets...
-- dans le menu qui s'ouvre, cochez en bas "Selected packets only"
-- sauvegardez, ça produit un fichier `.pcapng` (qu'on appelle communément "un ptit PCAP frer") que vous livrerez dans le dépôt git
-
-**Si vous voyez le p'tit pote 🦈 c'est qu'il y a un PCAP à produire et à mettre dans votre dépôt git de rendu.**
-
 # I. Setup IP
-
-Le lab, il vous faut deux machines : 
-
-- les deux machines doivent être connectées physiquement
-- vous devez choisir vous-mêmes les IPs à attribuer sur les interfaces réseau, les contraintes :
-  - IPs privées (évidemment n_n)
-  - dans un réseau qui peut contenir au moins 1000 adresses IP (il faut donc choisir un masque adapté)
-  - oui c'est random, on s'exerce c'est tout, p'tit jog en se levant c:
-  - le masque choisi doit être le plus grand possible (le plus proche de 32 possible) afin que le réseau soit le plus petit possible
 
 🌞 **Mettez en place une configuration réseau fonctionnelle entre les deux machines**
 
@@ -223,7 +188,6 @@ Broadcast : ff:ff:ff:ff:ff:ff
 🦈 **PCAP qui contient les trames ARP**
 
 > L'échange ARP est constitué de deux trames : un ARP broadcast et un ARP reply.
-
 
 # III. DHCP you too my brooo
 
