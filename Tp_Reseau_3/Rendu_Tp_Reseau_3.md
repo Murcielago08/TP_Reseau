@@ -65,6 +65,18 @@ Première partie simple, on va avoir besoin de 2 VMs.
 - prouvez que l'info est correcte (que l'adresse MAC que vous voyez dans la table est bien celle de la machine correspondante)
   - une commande pour voir la MAC de `marcel` dans la table ARP de `john`
   - et une commande pour afficher la MAC de `marcel`, depuis `marcel`
+```
+marcel :
+[murci@localhost ~]# ip n s 10.3.1.11
+10.3.1.11 dev enp0s8 llaaddr 08:00:27:cd:c3:ae STALE
+john:
+[murci@localhost ~]# ip n s 10.3.1.12
+10.3.1.12 dev enp0s8 llaaddr 08:00:27:65:01:b9 STALE
+```
+```
+[murci@localhost ~]# ip link show
+
+```
 
 ### 2. Analyse de trames
 
