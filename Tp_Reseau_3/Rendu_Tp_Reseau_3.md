@@ -143,6 +143,15 @@ Vous aurez besoin de 3 VMs pour cette partie. **Réutilisez les deux VMs précé
 
 🌞**Activer le routage sur le noeud `router`**
 
+```
+avant:
+sudo firewall-cmd --list-all
+masquerade: no
+après:
+sudo firewall-cmd --list-all
+masquerade: yes
+```
+
 > Cette étape est nécessaire car Rocky Linux c'est pas un OS dédié au routage par défaut. Ce n'est bien évidemment une opération qui n'est pas nécessaire sur un équipement routeur dédié comme du matériel Cisco.
 
 🌞**Ajouter les routes statiques nécessaires pour que `john` et `marcel` puissent se `ping`**
