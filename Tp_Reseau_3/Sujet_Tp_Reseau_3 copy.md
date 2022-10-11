@@ -73,7 +73,7 @@ Première partie simple, on va avoir besoin de 2 VMs.
 - utilisez la commande `tcpdump` pour réaliser une capture de trame
 - videz vos tables ARP, sur les deux machines, puis effectuez un `ping`
 
-🦈 **Capture réseau `tp2_arp.pcapng`** qui contient un ARP request et un ARP reply
+🦈 **Capture réseau `tp3_arp.pcapng`** qui contient un ARP request et un ARP reply
 
 > **Si vous ne savez pas comment récupérer votre fichier `.pcapng`** sur votre hôte afin de l'ouvrir dans Wireshark, et me le livrer en rendu, demandez-moi.
 
@@ -105,6 +105,7 @@ Vous aurez besoin de 3 VMs pour cette partie. **Réutilisez les deux VMs précé
 
 🌞**Ajouter les routes statiques nécessaires pour que `john` et `marcel` puissent se `ping`**
 
+- il faut taper une commande `ip route add` pour cela, voir mémo
 - il faut ajouter une seule route des deux côtés
 - une fois les routes en place, vérifiez avec un `ping` que les deux machines peuvent se joindre
 
@@ -125,15 +126,15 @@ Par exemple (copiez-collez ce tableau ce sera le plus simple) :
 
 | ordre | type trame  | IP source | MAC source              | IP destination | MAC destination            |
 |-------|-------------|-----------|-------------------------|----------------|----------------------------|
-| 1     | Requête ARP | x         | `john` `AA:BB:CC:DD:EE` | x              | Broadcast `FF:FF:FF:FF:FF` |
-| 2     | Réponse ARP | x         | ?                       | x              | `john` `AA:BB:CC:DD:EE`    |
+| 1     | Requête ARP | x         | `marcel` `AA:BB:CC:DD:EE` | x              | Broadcast `FF:FF:FF:FF:FF` |
+| 2     | Réponse ARP | x         | ?                       | x              | `marcel` `AA:BB:CC:DD:EE`    |
 | ...   | ...         | ...       | ...                     |                |                            |
 | ?     | Ping        | ?         | ?                       | ?              | ?                          |
 | ?     | Pong        | ?         | ?                       | ?              | ?                          |
 
 > Vous pourriez, par curiosité, lancer la capture sur `john` aussi, pour voir l'échange qu'il a effectué de son côté.
 
-🦈 **Capture réseau `tp2_routage_marcel.pcapng`**
+🦈 **Capture réseau `tp3_routage_marcel.pcapng`**
 
 ### 3. Accès internet
 
@@ -155,10 +156,10 @@ Par exemple (copiez-collez ce tableau ce sera le plus simple) :
 
 | ordre | type trame | IP source          | MAC source              | IP destination | MAC destination |     |
 |-------|------------|--------------------|-------------------------|----------------|-----------------|-----|
-| 1     | ping       | `john` `10.3.1.12` | `john` `AA:BB:CC:DD:EE` | `8.8.8.8`      | ?               |     |
+| 1     | ping       | `marcel` `10.3.1.12` | `marcel` `AA:BB:CC:DD:EE` | `8.8.8.8`      | ?               |     |
 | 2     | pong       | ...                | ...                     | ...            | ...             | ... |
 
-🦈 **Capture réseau `tp2_routage_internet.pcapng`**
+🦈 **Capture réseau `tp3_routage_internet.pcapng`**
 
 ## III. DHCP
 
@@ -218,4 +219,4 @@ On reprend la config précédente, et on ajoutera à la fin de cette partie une 
 - demander une nouvelle IP afin de générer un échange DHCP
 - exportez le fichier `.pcapng`
 
-🦈 **Capture réseau `tp2_dhcp.pcapng`**
+🦈 **Capture réseau `tp3_dhcp.pcapng`**
