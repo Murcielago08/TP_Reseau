@@ -74,8 +74,18 @@ john:
 10.3.1.12 dev enp0s8 llaaddr 08:00:27:65:01:b9 STALE
 ```
 ```
-[murci@localhost ~]# ip link show
-
+marcel:
+[murci@localhost ~]$ ip link show
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+2: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP mode DEFAULT group default qlen 1000
+    link/ether 08:00:27:cd:c3:ae brd ff:ff:ff:ff:ff:ff
+john :
+[murci@localhost ~]$ ip link show
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+2: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP mode DEFAULT group default qlen 1000
+    link/ether 08:00:27:65:01:b9 brd ff:ff:ff:ff:ff:ff
 ```
 
 ### 2. Analyse de trames
