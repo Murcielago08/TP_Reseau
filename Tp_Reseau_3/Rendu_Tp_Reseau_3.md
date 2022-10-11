@@ -106,11 +106,12 @@ tcpdump: listening on enp0s8, link-type EN10MB (Ethernet), snapshot length 26214
 10 packets received by filter
 0 packets dropped by kernel
 
+ping 10.3.1.11
+
 scp murci@10.3.1.11:/home/murci/tp3_arp.pcapng .
 murci@10.3.1.11's password:
 tp3_arp.pcapng                                                                        100% 1502     1.5MB/s   00:00
 
-ping 10.3.1.11
 ```
 
 🦈 **Capture réseau `tp3_arp.pcapng`** qui contient un ARP request et un ARP reply
