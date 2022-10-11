@@ -67,10 +67,10 @@ Première partie simple, on va avoir besoin de 2 VMs.
   - et une commande pour afficher la MAC de `marcel`, depuis `marcel`
 ```
 marcel :
-[murci@localhost ~]# ip n s 10.3.1.11
+[murci@localhost ~]$ ip n s 10.3.1.11
 10.3.1.11 dev enp0s8 llaaddr 08:00:27:cd:c3:ae STALE
 john:
-[murci@localhost ~]# ip n s 10.3.1.12
+[murci@localhost ~]$ ip n s 10.3.1.12
 10.3.1.12 dev enp0s8 llaaddr 08:00:27:65:01:b9 STALE
 ```
 ```
@@ -159,6 +159,18 @@ masquerade: yes
 - il faut taper une commande `ip route add` pour cela, voir mémo
 - il faut ajouter une seule route des deux côtés
 - une fois les routes en place, vérifiez avec un `ping` que les deux machines peuvent se joindre
+
+```
+john:
+[murci@localhost ~]$ nano /etc/sysconfig/network-scripts/route-enp0s8
+10.3.2.0/24 via 10.3.1.254 dev enp0s8
+[murci@localhost ~]$ sudo systemctl restart NetworkManager
+
+marcel:
+[murci@localhost ~]$ nano /etc/sysconfig/network-scripts/route-enp0s9
+10.3.1.0/24 via 10.3.2.254 dev enp0s9
+[murci@localhost ~]$ sudo systemctl restart NetworkManager
+```
 
 ![THE SIZE](./pics/thesize.png)
 
