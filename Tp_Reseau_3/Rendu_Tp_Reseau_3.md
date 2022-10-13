@@ -252,7 +252,7 @@ Par exemple (copiez-collez ce tableau ce sera le plus simple) :
 
 | ordre | type trame | IP source          | MAC source              | IP destination | MAC destination |     |
 |-------|------------|--------------------|-------------------------|----------------|-----------------|-----|
-| 1     | ping       | `marcel` `10.3.1.12` | `marcel` `AA:BB:CC:DD:EE` | `8.8.8.8`      | ?               |     |
+| 1     | ping       |`marcel` `10.3.1.12`|`marcel` `AA:BB:CC:DD:EE`| `8.8.8.8`      | ?               |     |
 | 2     | pong       | ...                | ...                     | ...            | ...             | ... |
 
 🦈 **Capture réseau `tp3_routage_internet.pcapng`**
