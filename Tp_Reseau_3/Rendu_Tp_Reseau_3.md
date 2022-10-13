@@ -255,7 +255,17 @@ PING 192.168.1.1 (192.168.1.1) 56(84) bytes of data.
   - vérifiez que vous avez une résolution de noms qui fonctionne avec `dig`
   - puis avec un `ping` vers un nom de domaine
 
+```
+[murci@localhost ~]$ dig google.com
 
+; <<>> DiG 9.16.23-RH <<>> google.com
+;; SERVER: 8.8.8.8#53(8.8.8.8)
+
+[murci@localhost ~]$ ping google.com
+PING google.com (142.250.179.78) 56(84) bytes of data.
+64 bytes from par21s19-in-f14.1e100.net (142.250.179.78): icmp_seq=1 ttl=115 time=16.1 ms
+64 bytes from par21s19-in-f14.1e100.net (142.250.179.78): icmp_seq=2 ttl=115 time=16.2 ms
+```
 
 🌞**Analyse de trames**
 
