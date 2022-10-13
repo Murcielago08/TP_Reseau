@@ -229,7 +229,7 @@ Par exemple (copiez-collez ce tableau ce sera le plus simple) :
 
 > Vous pourriez, par curiosité, lancer la capture sur `john` aussi, pour voir l'échange qu'il a effectué de son côté.
 
-[]()
+[ARP_routage](tp3_routage_marcel.pcap)
 🦈 **Capture réseau `tp3_routage_marcel.pcapng`**
 
 ### 3. Accès internet
