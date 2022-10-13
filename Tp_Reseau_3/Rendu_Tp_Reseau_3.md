@@ -221,12 +221,12 @@ Par exemple (copiez-collez ce tableau ce sera le plus simple) :
 
 | ordre | type trame  | IP source | MAC source              | IP destination | MAC destination            |
 |-------|-------------|-----------|-------------------------|----------------|----------------------------|
-| 1     | Requête ARP | x         |`marcel` `AA:BB:CC:DD:EE`| x              | Broadcast `FF:FF:FF:FF:FF` |
-| 2     | Réponse ARP | x         | ?                       | x              | `marcel` `AA:BB:CC:DD:EE`  |
-| ...   | ...         | ...       | ...                     |                |                            |
-| ?     | Ping        | ?         | ?                       | ?              | ?                          |
-| ?     | Pong        | ?         | ?                       | ?              | ?                          |
-
+| 1     | Requête ARP | x         |`Routeur` `08:00:27:B2:44:BF`| x          | Broadcast `FF:FF:FF:FF:FF` |
+| 2     | Réponse ARP | x         |`marcel` `08:00:27:65:01:B9`| x           | `Routeur` `08:00:27:B2:44:BF`|
+| 3     | Ping        | 10.3.2.254|`Routeur` `08:00:27:B2:44:BF`|10.3.2.12   | Broadcast `FF:FF:FF:FF:FF` |
+| 4     | Pong        | 10.3.2.12 |`marcel` `08:00:27:65:01:B9`|10.3.2.254   | `Routeur` `08:00:27:B2:44:BF`|
+| 5     | Requête ARP | x         |`marcel` `08:00:27:65:01:B9`| x           | `Routeur` `08:00:27:B2:44:BF`|
+| 6     | Réponse ARP | x         |`Routeur` `08:00:27:B2:44:BF`| x          | `marcel` `08:00:27:65:01:B9`|
 > Vous pourriez, par curiosité, lancer la capture sur `john` aussi, pour voir l'échange qu'il a effectué de son côté.
 
 [ARP_routage](tp3_routage_marcel.pcap)
