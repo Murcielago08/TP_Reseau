@@ -270,13 +270,32 @@ PING google.com (142.250.179.78) 56(84) bytes of data.
 🌞**Analyse de trames**
 
 - effectuez un `ping 8.8.8.8` depuis `john`
+
+```
+[murci@localhost ~]$ ping 8.8.8.8
+PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
+64 bytes from 8.8.8.8: icmp_seq=1 ttl=115 time=15.9 ms
+64 bytes from 8.8.8.8: icmp_seq=2 ttl=115 time=15.0 ms
+```
 - capturez le ping depuis `john` avec `tcpdump`
+
+```
+sudo tcpdump -i enp0s8 -c 10 -w tp3_routage_internet.pcapng
+dropped privs to tcpdump
+tcpdump: listening on enp0s8, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+10 packets captured
+11 packets received by filter
+0 packets dropped by kernel
+```
+
 - analysez un ping aller et le retour qui correspond et mettez dans un tableau :
 
 | ordre | type trame | IP source          | MAC source              | IP destination | MAC destination |     |
 |-------|------------|--------------------|-------------------------|----------------|-----------------|-----|
 | 1     | ping       |`marcel` `10.3.1.12`|`marcel` `AA:BB:CC:DD:EE`| `8.8.8.8`      | ?               |     |
 | 2     | pong       | ...                | ...                     | ...            | ...             | ... |
+
+
 
 🦈 **Capture réseau `tp3_routage_internet.pcapng`**
 
