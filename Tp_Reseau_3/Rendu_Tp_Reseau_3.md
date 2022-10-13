@@ -147,6 +147,7 @@ Vous aurez besoin de 3 VMs pour cette partie. **Réutilisez les deux VMs précé
 avant:
 sudo firewall-cmd --list-all
 masquerade: no
+
 après:
 sudo firewall-cmd --list-all
 masquerade: yes
@@ -162,14 +163,18 @@ masquerade: yes
 
 ```
 john:
-[murci@localhost ~]$ nano /etc/sysconfig/network-scripts/route-enp0s8
-10.3.2.0/24 via 10.3.1.254 dev enp0s8
-[murci@localhost ~]$ sudo systemctl restart NetworkManager
+ip route add 10.3.1.0/24 via 10.3.2.254 dev enp0s8
+[murci@localhost ~]$ ping 10.3.2.12
+PING 10.3.1.11 (10.3.1.11) 56(84) bytes of data.
+64 bytes from 10.3.1.11: icmp_seq=1 ttl=63 time=0.606 ms
+64 bytes from 10.3.1.11: icmp_seq=2 ttl=63 time=0.779 ms
 
 marcel:
-[murci@localhost ~]$ nano /etc/sysconfig/network-scripts/route-enp0s9
-10.3.1.0/24 via 10.3.2.254 dev enp0s9
-[murci@localhost ~]$ sudo systemctl restart NetworkManager
+[murci@localhost ~]$ ip route add 10.3.2.0/24 via 10.3.1.254 dev enp0s8
+[murci@localhost ~]$ ping 10.3.1.11
+PING 10.3.1.11 (10.3.1.11) 56(84) bytes of data.
+64 bytes from 10.3.1.11: icmp_seq=1 ttl=63 time=0.606 ms
+64 bytes from 10.3.1.11: icmp_seq=2 ttl=63 time=0.779 ms
 ```
 
 ![THE SIZE](./pics/thesize.png)
@@ -183,20 +188,48 @@ marcel:
 - regardez les tables ARP des trois noeuds
 - essayez de déduire un peu les échanges ARP qui ont eu lieu
 - répétez l'opération précédente (vider les tables, puis `ping`), en lançant `tcpdump` sur `marcel`
+
+```
+john:
+[murci@localhost ~]$ ip n f all
+[murci@localhost ~]$ ping 10.3.2.12
+PING 10.3.2.12 (10.3.2.12) 56(84) bytes of data.
+64 bytes from 10.3.2.12: icmp_seq=1 ttl=63 time=0.904 ms
+64 bytes from 10.3.2.12: icmp_seq=2 ttl=63 time=0.758 ms
+[murci@localhost ~]$ ip n s
+10.3.1.254 dev enp0s8 lladdr 08:00:27:c7:88:1b REACHABLE
+10.3.1.1 dev enp0s8 lladdr 0a:00:27:00:00:13 REACHABLE
+
+mercel:
+[murci@localhost ~]$ ip n f all
+[murci@localhost ~]$ ip n s
+10.3.2.1 dev enp0s8 lladdr 0a:00:27:00:00:17 REACHABLE
+10.3.2.254 dev enp0s8 lladdr 08:00:27:b2:44:bf STALE
+
+routeur:
+[root@localhost ~]$ ip n f all
+[root@localhost ~]$ ip n s
+10.3.2.12 dev enp0s8 lladdr 08:00:27:c7:88:1b REACHABLE
+10.3.1.11 dev enp0s8 lladdr 0a:00:27:00:00:13 REACHABLE
+
+John fait un échange ARP avec son reseau et le routeur, le routeur resoit le ping et renvoie le ping dans le reseau 10.3.1.0 et 10.3.2.0, marcel resoit donc le ping
+```
+
 - **écrivez, dans l'ordre, les échanges ARP qui ont eu lieu, puis le ping et le pong, je veux TOUTES les trames** utiles pour l'échange
 
 Par exemple (copiez-collez ce tableau ce sera le plus simple) :
 
 | ordre | type trame  | IP source | MAC source              | IP destination | MAC destination            |
 |-------|-------------|-----------|-------------------------|----------------|----------------------------|
-| 1     | Requête ARP | x         | `marcel` `AA:BB:CC:DD:EE` | x              | Broadcast `FF:FF:FF:FF:FF` |
-| 2     | Réponse ARP | x         | ?                       | x              | `marcel` `AA:BB:CC:DD:EE`    |
+| 1     | Requête ARP | x         |`marcel` `AA:BB:CC:DD:EE`| x              | Broadcast `FF:FF:FF:FF:FF` |
+| 2     | Réponse ARP | x         | ?                       | x              | `marcel` `AA:BB:CC:DD:EE`  |
 | ...   | ...         | ...       | ...                     |                |                            |
 | ?     | Ping        | ?         | ?                       | ?              | ?                          |
 | ?     | Pong        | ?         | ?                       | ?              | ?                          |
 
 > Vous pourriez, par curiosité, lancer la capture sur `john` aussi, pour voir l'échange qu'il a effectué de son côté.
 
+[]()
 🦈 **Capture réseau `tp3_routage_marcel.pcapng`**
 
 ### 3. Accès internet
