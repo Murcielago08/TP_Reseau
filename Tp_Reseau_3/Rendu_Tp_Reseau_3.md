@@ -69,6 +69,7 @@ Première partie simple, on va avoir besoin de 2 VMs.
 marcel :
 [murci@localhost ~]$ ip n s 10.3.1.11
 10.3.1.11 dev enp0s8 llaaddr 08:00:27:cd:c3:ae STALE
+
 john:
 [murci@localhost ~]$ ip n s 10.3.1.12
 10.3.1.12 dev enp0s8 llaaddr 08:00:27:65:01:b9 STALE
@@ -80,6 +81,7 @@ marcel:
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
 2: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP mode DEFAULT group default qlen 1000
     link/ether 08:00:27:cd:c3:ae brd ff:ff:ff:ff:ff:ff
+
 john :
 [murci@localhost ~]$ ip link show
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
@@ -96,7 +98,7 @@ john :
 - videz vos tables ARP, sur les deux machines, puis effectuez un `ping`
 
 ```
-sudo ip n f all
+[murci@localhost ~]$ sudo ip n f all
 
 sudo tcpdump -i enp0s8 -c 10 -w tp3_arp.pcapng
 dropped privs to tcpdump
@@ -108,7 +110,7 @@ tcpdump: listening on enp0s8, link-type EN10MB (Ethernet), snapshot length 26214
 
 ping 10.3.1.11
 
-scp murci@10.3.1.11:/home/murci/tp3_arp.pcapng .
+[murci@localhost ~]$ scp murci@10.3.1.11:/home/murci/tp3_arp.pcapng .
 murci@10.3.1.11's password:
 tp3_arp.pcapng                                                                        100% 1502     1.5MB/s   00:00
 ```
@@ -145,11 +147,11 @@ Vous aurez besoin de 3 VMs pour cette partie. **Réutilisez les deux VMs précé
 
 ```
 avant:
-sudo firewall-cmd --list-all
+[murci@localhost ~]$ sudo firewall-cmd --list-all
 masquerade: no
 
 après:
-sudo firewall-cmd --list-all
+[murci@localhost ~]$ sudo firewall-cmd --list-all
 masquerade: yes
 ```
 
@@ -163,7 +165,8 @@ masquerade: yes
 
 ```
 john:
-ip route add 10.3.1.0/24 via 10.3.2.254 dev enp0s8
+[murci@localhost ~]$ ip route add 10.3.1.0/24 via 10.3.2.254 dev enp0s8
+
 [murci@localhost ~]$ ping 10.3.2.12
 PING 10.3.1.11 (10.3.1.11) 56(84) bytes of data.
 64 bytes from 10.3.1.11: icmp_seq=1 ttl=63 time=0.606 ms
@@ -171,6 +174,7 @@ PING 10.3.1.11 (10.3.1.11) 56(84) bytes of data.
 
 marcel:
 [murci@localhost ~]$ ip route add 10.3.2.0/24 via 10.3.1.254 dev enp0s8
+
 [murci@localhost ~]$ ping 10.3.1.11
 PING 10.3.1.11 (10.3.1.11) 56(84) bytes of data.
 64 bytes from 10.3.1.11: icmp_seq=1 ttl=63 time=0.606 ms
@@ -192,10 +196,12 @@ PING 10.3.1.11 (10.3.1.11) 56(84) bytes of data.
 ```
 john:
 [murci@localhost ~]$ ip n f all
+
 [murci@localhost ~]$ ping 10.3.2.12
 PING 10.3.2.12 (10.3.2.12) 56(84) bytes of data.
 64 bytes from 10.3.2.12: icmp_seq=1 ttl=63 time=0.904 ms
 64 bytes from 10.3.2.12: icmp_seq=2 ttl=63 time=0.758 ms
+
 [murci@localhost ~]$ ip n s
 10.3.1.254 dev enp0s8 lladdr 08:00:27:c7:88:1b REACHABLE
 10.3.1.1 dev enp0s8 lladdr 0a:00:27:00:00:13 REACHABLE
@@ -280,13 +286,14 @@ PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
 - capturez le ping depuis `john` avec `tcpdump`
 
 ```
-sudo tcpdump -i enp0s8 -c 10 -w tp3_routage_internet.pcapng
+[murci@localhost ~]$ sudo tcpdump -i enp0s8 -c 10 -w tp3_routage_internet.pcapng
 dropped privs to tcpdump
 tcpdump: listening on enp0s8, link-type EN10MB (Ethernet), snapshot length 262144 bytes
 10 packets captured
 11 packets received by filter
 0 packets dropped by kernel
-scp murci@10.3.2.12:/home/murci/tp3_routage_internet.pcapng .
+
+[murci@localhost ~]$ scp murci@10.3.2.12:/home/murci/tp3_routage_internet.pcapng .
 [sudo] password for murci:
 murci@10.3.2.12's password:
 tp3_routage_internet.pcapng                                                        100%  936     2.6MB/s   00:00
@@ -335,6 +342,7 @@ On reprend la config précédente, et on ajoutera à la fin de cette partie une 
   
 ```
 [murci@localhost ~]$ sudo dnf install dhcp-server
+
 [murci@localhost ~]$ sudo nano /etc/dhcp/dhcp.conf
 fafault-lease-time 900;
 max-lease-time 10800;
@@ -349,12 +357,22 @@ option routeurs 10.3.1.254;
 - créer une machine `bob`
 - faites lui récupérer une IP en DHCP à l'aide de votre serveur
 ```
+[murci@localhost ~]$ sudo dnf install dhcp-client
+
 [murci@localhost ~]$ nano /etc/sysconfig/network-scripts/ifcfg-enp0s8
 NAME=enp0s8
 DEVICE=enp0s8
 
 BOOTPROTO=dhcp
 ONBOOT=yes
+
+[murci@localhost ~]$ sudo dhclient
+
+[murci@localhost ~]$ ip a
+2: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:5b:e5:75 brd ff:ff:ff:ff:ff:ff
+    inet 10.3.1.2/24 brd 10.3.1.255 scope global dynamic noprefixroute enp0s8
+       valid_lft 755sec preferred_lft 755sec
 ```
 
 > Il est possible d'utilise la commande `dhclient` pour forcer à la main, depuis la ligne de commande, la demande d'une IP en DHCP, ou renouveler complètement l'échange DHCP (voir `dhclient -h` puis call me et/ou Google si besoin d'aide).
@@ -364,16 +382,57 @@ ONBOOT=yes
 - ajoutez de la configuration à votre DHCP pour qu'il donne aux clients, en plus de leur IP :
   - une route par défaut
   - un serveur DNS à utiliser
+```
+option routers 10.3.1.254;
+option subnet-mask 255.255.255.0;
+option domain-name-servers 8.8.8.8;
+```
 - récupérez de nouveau une IP en DHCP sur `bob` pour tester :
   - `marcel` doit avoir une IP
     - vérifier avec une commande qu'il a récupéré son IP
     - vérifier qu'il peut `ping` sa passerelle
+```
+[murci@localhost ~]$ sudo dhclient -r
+Killed old client process
+
+[murci@localhost ~]$ sudo dhclient
+
+[murci@localhost ~]$ ip a
+2: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:5b:e5:75 brd ff:ff:ff:ff:ff:ff
+    inet 10.3.1.2/24 brd 10.3.1.255 scope global dynamic noprefixroute enp0s8
+       valid_lft 872sec preferred_lft 872sec
+
+[murci@localhost ~]$ ping 10.3.1.254
+PING 10.3.1.254 (10.3.1.254) 56(84) bytes of data.
+64 bytes from 10.3.1.254: icmp_seq=1 ttl=64 time=0.282 ms
+```
   - il doit avoir une route par défaut
     - vérifier la présence de la route avec une commande
     - vérifier que la route fonctionne avec un `ping` vers une IP
+```
+[murci@localhost ~]$ ip r s
+default via 10.3.1.254 dev enp0s8 proto dhcp src 10.3.1.2 metric 100
+10.3.1.0/24 dev enp0s8 proto kernel scope link src 10.3.1.2 metric 100
+
+[murci@localhost ~]$ ping 10.3.2.12
+PING 10.3.2.12 (10.3.2.12) 56(84) bytes of data.
+64 bytes from 10.3.2.12: icmp_seq=1 ttl=63 time=0.725 ms
+64 bytes from 10.3.2.12: icmp_seq=2 ttl=63 time=0.868 ms
+```
   - il doit connaître l'adresse d'un serveur DNS pour avoir de la résolution de noms
     - vérifier avec la commande `dig` que ça fonctionne
-    - vérifier un `ping` vers un nom de domaine
+    - vérifier un `ping` vers un nom de domaine*
+```
+[murci@localhost ~]$ dig google.com
+;; ANSWER SECTION:
+google.com.             300     IN      A       142.250.75.238
+
+[murci@localhost ~]$ ping 142.250.75.238
+PING 142.250.75.238 (142.250.75.238) 56(84) bytes of data.
+64 bytes from 142.250.75.238: icmp_seq=1 ttl=115 time=17.9 ms
+64 bytes from 142.250.75.238: icmp_seq=2 ttl=115 time=15.0 ms
+```
 
 ### 2. Analyse de trames
 
@@ -382,5 +441,23 @@ ONBOOT=yes
 - lancer une capture à l'aide de `tcpdump` afin de capturer un échange DHCP
 - demander une nouvelle IP afin de générer un échange DHCP
 - exportez le fichier `.pcapng`
+```
+bob:
+[murci@localhost ~]$ dhclient -r
+[murci@localhost ~]$ dhclient
+
+john:
+[murci@localhost ~]$ sudo tcpdump -i enp0s8 -c 10 -w tp3_dhcp.pcapng
+dropped privs to tcpdump
+tcpdump: listening on enp0s8, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+10 packets captured
+11 packets received by filter
+0 packets dropped by kernel
+
+
+C:\Users\darkj> scp murci@10.3.1.11:/home/murci/tp3_dhcp.pcapng .
+murci@10.3.1.11's password:
+tp3_dhcp.pcapng                                                                       100% 2548     2.5MB/s   00:00
+```
 
 🦈 **Capture réseau `tp3_dhcp.pcapng`**
