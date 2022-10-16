@@ -332,8 +332,30 @@ On reprend la config précédente, et on ajoutera à la fin de cette partie une 
 🌞**Sur la machine `john`, vous installerez et configurerez un serveur DHCP** (go Google "rocky linux dhcp server").
 
 - installation du serveur sur `john`
+  
+```
+[murci@localhost ~]$ sudo dnf install dhcp-server
+[murci@localhost ~]$ sudo nano /etc/dhcp/dhcp.conf
+fafault-lease-time 900;
+max-lease-time 10800;
+
+authoritative;
+
+subnet 10.3.1.0 netmask 255.255.255.0 {
+range 10.3.1.20 10.3.1.99;
+option routeurs 10.3.1.254;
+}
+```
 - créer une machine `bob`
 - faites lui récupérer une IP en DHCP à l'aide de votre serveur
+```
+[murci@localhost ~]$ nano /etc/sysconfig/network-scripts/ifcfg-enp0s8
+NAME=enp0s8
+DEVICE=enp0s8
+
+BOOTPROTO=dhcp
+ONBOOT=yes
+```
 
 > Il est possible d'utilise la commande `dhclient` pour forcer à la main, depuis la ligne de commande, la demande d'une IP en DHCP, ou renouveler complètement l'échange DHCP (voir `dhclient -h` puis call me et/ou Google si besoin d'aide).
 
