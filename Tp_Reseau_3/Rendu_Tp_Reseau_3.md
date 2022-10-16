@@ -286,6 +286,10 @@ tcpdump: listening on enp0s8, link-type EN10MB (Ethernet), snapshot length 26214
 10 packets captured
 11 packets received by filter
 0 packets dropped by kernel
+scp murci@10.3.2.12:/home/murci/tp3_routage_internet.pcapng .
+[sudo] password for murci:
+murci@10.3.2.12's password:
+tp3_routage_internet.pcapng                                                        100%  936     2.6MB/s   00:00
 ```
 
 - analysez un ping aller et le retour qui correspond et mettez dans un tableau :
