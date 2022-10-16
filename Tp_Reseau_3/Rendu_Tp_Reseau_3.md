@@ -294,12 +294,12 @@ tp3_routage_internet.pcapng                                                     
 
 - analysez un ping aller et le retour qui correspond et mettez dans un tableau :
 
-| ordre | type trame | IP source          | MAC source              | IP destination | MAC destination |     |
-|-------|------------|--------------------|-------------------------|----------------|-----------------|-----|
-| 1     | ping       |`marcel` `10.3.1.12`|`marcel` `AA:BB:CC:DD:EE`| `8.8.8.8`      | ?               |     |
-| 2     | pong       | ...                | ...                     | ...            | ...             | ... |
+| ordre | type trame | IP source          | MAC source              | IP destination | MAC destination |
+|-------|------------|--------------------|-------------------------|----------------|-----------------|
+| 1     | ping       |`john` `10.3.1.11`  |`john` `08:00:27:63:F7:AF`|`8.8.8.8`      |`08:00:27:27:F6:5A`|
+| 2     | pong       |`8.8.8.8`           |`08:00:27:27:F6:5A`      |`john` `10.3.1.11`|`john` `08:00:27:63:F7:AF`|
 
-
+[Routage internet](./tp3_routage_internet.pcapng)
 
 🦈 **Capture réseau `tp3_routage_internet.pcapng`**
 
