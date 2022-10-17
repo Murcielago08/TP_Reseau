@@ -344,7 +344,7 @@ On reprend la config précédente, et on ajoutera à la fin de cette partie une 
 [murci@localhost ~]$ sudo dnf install dhcp-server
 
 [murci@localhost ~]$ sudo nano /etc/dhcp/dhcp.conf
-fafault-lease-time 900;
+default-lease-time 900;
 max-lease-time 10800;
 
 authoritative;
