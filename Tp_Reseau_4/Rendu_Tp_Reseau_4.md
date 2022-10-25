@@ -21,6 +21,11 @@ Dans cette seconde partie, vous étudierez donc :
 - [Sommaire](#sommaire)
 - [0. Prérequis](#0-prérequis)
 - [I. First steps](#i-first-steps)
+  - [Battle.net](#battlenet)
+  - [Discord](#discord)
+  - [Minecraft](#minecraft)
+  - [Soundcloud](#soundcloud)
+  - [PokeMMO](#pokemmo)
 - [II. Mise en place](#ii-mise-en-place)
   - [1. SSH](#1-ssh)
   - [2. Routage](#2-routage)
@@ -55,13 +60,13 @@ Faites-vous un petit top 5 des applications que vous utilisez sur votre PC souve
 
 🌞 **Demandez l'avis à votre OS**
 
+## Battle.net
 ```
-Nom: Battle.net
 Ip dst: 37.244.28.21
 port dst: 53431
 port src: 1119
 netstat: 
-C:\Users\darkj> netstat -n
+C:\Users\darkj> netstat -b -n
 
 Connexions actives
 
@@ -70,13 +75,13 @@ Connexions actives
 ```
 [TCP_Battle.net](tcp_battle.net.pcapng)
 
+## Discord
 ```
-Nom: Discord
 Ip dst: 162.159.135.234
 port dst: 443
 port src: 61933
 netstat: 
-C:\Users\darkj> netstat -n
+C:\Users\darkj> netstat -b -n
 
 Connexions actives
 
@@ -85,8 +90,8 @@ Connexions actives
 ```
 [TCP_Discord](tcp_discord.pcapng)
 
-```
-Nom: 
+## Minecraft
+``` 
 Ip dst: 
 port dst: 
 port src: 
@@ -100,35 +105,31 @@ Connexions actives
 ```
 []()
 
+## Soundcloud
 ```
-Nom: 
-Ip dst: 
-port dst: 
-port src: 
+Ip dst: 52.222.158.50
+port dst: 443
+port src: 51782
 netstat: 
-C:\Users\darkj> netstat -n
+C:\Users\darkj> netstat -b -n
 
 Connexions actives
 
   Proto  Adresse locale         Adresse distante       État
-  
+  TCP    10.33.16.168:51782     52.222.158.50:443      ESTABLISHED
 ```
 []()
 
+## PokeMMO
 ```
-Nom: 
-Ip dst: 
-port dst: 
-port src: 
+Ip dst: 8.8.8.8
+port dst: 53
+port src: 63438
 netstat: 
-C:\Users\darkj> netstat -n
-
-Connexions actives
-
-  Proto  Adresse locale         Adresse distante       État
-  
+C:\Users\darkj> netstat -b -n
+"pas de résultat udp"
 ```
-[_PokeMMO]()
+[UDP_PokeMMO](udp_PokeMMO.pcapng)
 
 🦈🦈🦈🦈🦈 **Bah ouais, captures Wireshark à l'appui évidemment.** Une capture pour chaque application, qui met bien en évidence le trafic en question.
 
