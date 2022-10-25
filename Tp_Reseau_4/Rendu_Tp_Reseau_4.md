@@ -28,9 +28,7 @@ Dans cette seconde partie, vous étudierez donc :
   - [PokeMMO](#pokemmo)
 - [II. Mise en place](#ii-mise-en-place)
   - [1. SSH](#1-ssh)
-  - [2. Routage](#2-routage)
 - [III. DNS](#iii-dns)
-  - [1. Présentation](#1-présentation)
   - [2. Setup](#2-setup)
   - [3. Test](#3-test)
 
@@ -146,57 +144,22 @@ Connectez-vous en SSH à votre VM.
 
 🌞 **Examinez le trafic dans Wireshark**
 
-- **déterminez si SSH utilise TCP ou UDP**
-  - pareil réfléchissez-y deux minutes, logique qu'on utilise pas UDP non ?
-- **repérez le *3-Way Handshake* à l'établissement de la connexion**
-  - c'est le `SYN` `SYNACK` `ACK`
-- **repérez du trafic SSH**
-- **repérez le FIN FINACK à la fin d'une connexion**
-- entre le *3-way handshake* et l'échange `FIN`, c'est juste une bouillie de caca chiffré, dans un tunnel TCP
+[TCP_SSH]()
 
 🌞 **Demandez aux OS**
 
-- repérez, avec une commande adaptée (`netstat` ou `ss`), la connexion SSH depuis votre machine
-- ET repérez la connexion SSH depuis votre VM
+```
+C:\Windows\system32> netstat -b -n
+
+Connexions actives
+
+  Proto  Adresse locale         Adresse distante       État
+  TCP    10.4.1.1:64271         10.4.1.11:22           ESTABLISHED
+```
 
 🦈 **Je veux une capture clean avec le 3-way handshake, un peu de trafic au milieu et une fin de connexion**
 
-## 2. Routage
-
-Ouais, un peu de répétition, ça fait jamais de mal. On va créer une machine qui sera notre routeur, et **permettra à toutes les autres machines du réseau d'avoir Internet.**
-
-🖥️ **Machine `router.tp4.b1`**
-
-- n'oubliez pas de dérouler la checklist (voir [les prérequis du TP](#0-prérequis))
-- donnez lui l'adresse IP `10.4.1.11/24` sur sa carte host-only
-- ajoutez-lui une carte NAT, qui permettra de donner Internet aux autres machines du réseau
-- référez-vous au TP précédent
-
-> Rien à remettre dans le compte-rendu pour cette partie.
-
 # III. DNS
-
-## 1. Présentation
-
-Un serveur DNS est un serveur qui est capable de répondre à des requêtes DNS.
-
-Une requête DNS est la requête effectuée par une machine lorsqu'elle souhaite connaître l'adresse IP d'une machine, lorsqu'elle connaît son nom.
-
-Par exemple, si vous ouvrez un navigateur web et saisissez `https://www.google.com` alors une requête DNS est automatiquement effectuée par votre PC pour déterminez à quelle adresse IP correspond le nom `www.google.com`.
-
-> La partie `https://` ne fait pas partie du nom de domaine, ça indique simplement au navigateur la méthode de connexion. Ici, c'est HTTPS.
-
-Dans cette partie, on va monter une VM qui porte un serveur DNS. Ce dernier répondra aux autres VMs du LAN quand elles auront besoin de connaître des noms. Ainsi, ce serveur pourra :
-
-- résoudre des noms locaux
-  - vous pourrez `ping node1.tp4.b1` et ça fonctionnera
-  - mais aussi `ping www.google.com` et votre serveur DNS sera capable de le résoudre aussi
-
-*Dans la vraie vie, il n'est pas rare qu'une entreprise gère elle-même ses noms de domaine, voire gère elle-même son serveur DNS. C'est donc du savoir ré-utilisable pour tous qu'on voit ici.*
-
-> En réalité, ce n'est pas votre serveur DNS qui pourra résoudre `www.google.com`, mais il sera capable de *forward* (faire passer) votre requête à un autre serveur DNS qui lui, connaît la réponse.
-
-![Haiku DNS](./pics/haiku_dns.png)
 
 ## 2. Setup
 
