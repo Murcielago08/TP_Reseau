@@ -12,12 +12,10 @@ ether = Ether(dst="ff:ff:ff:ff:ff:ff")
 # stack them
 packet = ether/arp
 
-result = srp(packet, timeout=3, verbose=0)[0]
-
 # a list of clients, we will fill this in the upcoming loop
 clients = []
 
-for sent, received in result:
+for sent, received in srp(packet, timeout=3, verbose=0)[0]:
     # for each response, append ip and mac address to `clients` list
     clients.append({'ip': received.psrc, 'mac': received.hwsrc})
 
