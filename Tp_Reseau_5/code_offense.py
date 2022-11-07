@@ -15,5 +15,5 @@ for sent, received in srp(packet, timeout=3, verbose=0)[0]:
 print("Available devices in the network:")
 print("IP" + " "*18+"MAC")
 for client in clients:
-    print("{:16}    {}".format(client['ip'], client['mac']))
+    print(client['ip'], client['mac'])
     
