@@ -1,8 +1,6 @@
 from scapy.all import ARP, Ether, srp
 
-print("coucou")
-
-target_ip = "192.168.1.1/24"
+target_ip = "192.168.1.11/24"
 # IP Address for the destination
 # create ARP packet
 arp = ARP(pdst=target_ip)
