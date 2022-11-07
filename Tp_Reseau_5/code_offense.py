@@ -2,13 +2,7 @@
 
 from scapy.all import ARP, Ether, srp
 
-# create ARP packet
-arp = ARP(pdst="192.168.1.1/24")
-# create the Ether broadcast packet
-# ff:ff:ff:ff:ff:ff MAC address indicates broadcasting
-ether = Ether(dst="ff:ff:ff:ff:ff:ff")
-# stack them
-packet = ether/arp
+packet = Ether(dst="ff:ff:ff:ff:ff:ff")/ARP(pdst="192.168.1.1/24")
 
 # a list of clients, we will fill this in the upcoming loop
 clients = []
