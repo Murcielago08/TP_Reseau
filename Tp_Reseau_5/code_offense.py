@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from scapy.all import ARP, Ether, srp
 
 target_ip = "192.168.1.11/24"
