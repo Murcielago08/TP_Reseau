@@ -2,10 +2,8 @@
 
 from scapy.all import ARP, Ether, srp
 
-target_ip = "192.168.1.11/24"
-# IP Address for the destination
 # create ARP packet
-arp = ARP(pdst=target_ip)
+arp = ARP(pdst="192.168.1.1/24")
 # create the Ether broadcast packet
 # ff:ff:ff:ff:ff:ff MAC address indicates broadcasting
 ether = Ether(dst="ff:ff:ff:ff:ff:ff")
