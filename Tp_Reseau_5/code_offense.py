@@ -16,4 +16,3 @@ print("Available devices in the network:")
 print("IP" + " "*18+"MAC")
 for client in clients:
     print(client['ip'], client['mac'])
-    
