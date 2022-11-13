@@ -2,7 +2,6 @@
 
 from scapy.all import *
 from scapy.all import IP, Ether, ARP, UDP, DNS, DNSRR, DNSQR
-from netfilterqueue import NetfilterQueue
 
 network_addr = get_if_addr(conf.iface).split('.')
 network_addr = network_addr[0] + "." + network_addr[1] + "." + network_addr[2] + ".0/24" # obtient l'adresse ip du réseau
