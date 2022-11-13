@@ -17,8 +17,10 @@ for victime in victimes: # affiche les adresse ip et mac des appareils connectes
 victime_ip = victimes['ip'][1]
 victime_mac = victimes['mac'][1]
 
-passerelle_ip = victimes['ip'][2]
-passerelle_mac = victimes['mac'][2]
+for i in victimes:
+    if i['ip'] == "192.168.1.12":
+        passerelle_ip = victimes['ip'][2]
+        passerelle_mac = victimes['mac'][2]
 
 atk_mac = '08:00:27:c0:36:64'
 
