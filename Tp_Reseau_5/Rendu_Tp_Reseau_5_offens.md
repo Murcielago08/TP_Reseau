@@ -17,7 +17,7 @@ cd .\Tp_Reseau_5
 
 Enfin, lancer le porgramme avec :
 ```
-sudo python3 offense.py
+sudo python3 code_offense.py
 ```
 
 Il suffit ensuite de suivre les instructions données dans le programme : Le programme va scanner le réseau puis demander à l'utilisateur de choisir sa victime, ainsi que d'indiquer quelle machine est le routeur.
