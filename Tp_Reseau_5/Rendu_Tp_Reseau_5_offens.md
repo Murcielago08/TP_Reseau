@@ -12,7 +12,7 @@ pip3 install scapy
 
 Puis, il faut se placer dans le bon dossier avec :
 ```
-cd TP5_offensif/
+cd .\Tp_Reseau_5
 ```
 
 Enfin, lancer le porgramme avec :
