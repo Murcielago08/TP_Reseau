@@ -70,22 +70,6 @@ PC2> ping 10.3.1.1
 
 # II. VLAN
 
-**Le but dans cette partie va être de tester un peu les *VLANs*.**
-
-On va rajouter **un troisième client** qui, bien que dans le même réseau, sera **isolé des autres grâce aux *VLANs***.
-
-**Les *VLANs* sont une configuration à effectuer sur les *switches*.** C'est les *switches* qui effectuent le blocage.
-
-Le principe est simple :
-
-- déclaration du VLAN sur tous les switches
-  - un VLAN a forcément un ID (un entier)
-  - bonne pratique, on lui met un nom
-- sur chaque switch, on définit le VLAN associé à chaque port
-  - genre "sur le port 35, c'est un client du VLAN 20 qui est branché"
-
-![VLAN FOR EVERYONE](./pics/get_a_vlan.jpg)
-
 ## 1. Topologie 2
 
 ![Topologie 2](./pics/topo2.png)
@@ -105,6 +89,22 @@ Le principe est simple :
 - définissez les IPs statiques sur tous les VPCS
 - vérifiez avec des `ping` que tout le monde se ping
 
+```
+PC1> ip 10.3.1.1 255.255.255.0
+Checking for duplicate address...
+PC1 : 10.3.1.1 255.255.255.0
+
+PC1>
+PC1> ping 10.3.1.2
+84 bytes from 10.3.1.2 icmp_seq=1 ttl=64 time=0.942 ms
+84 bytes from 10.3.1.2 icmp_seq=2 ttl=64 time=1.474 ms
+
+PC1> ping 10.3.1.3
+84 bytes from 10.3.1.3 icmp_seq=1 ttl=64 time=0.855 ms
+84 bytes from 10.3.1.3 icmp_seq=2 ttl=64 time=1.164 ms
+84 bytes from 10.3.1.3 icmp_seq=3 ttl=64 time=1.564 ms
+```
+
 🌞 **Configuration des VLANs**
 
 - référez-vous [à la section VLAN du mémo Cisco](../../cours/memo/memo_cisco.md#8-vlan)
@@ -115,7 +115,26 @@ Le principe est simple :
 🌞 **Vérif**
 
 - `pc1` et `pc2` doivent toujours pouvoir se ping
+
+```
+PC1> ping 10.3.1.2
+84 bytes from 10.3.1.2 icmp_seq=1 ttl=64 time=0.947 ms
+84 bytes from 10.3.1.2 icmp_seq=2 ttl=64 time=1.323 ms
+84 bytes from 10.3.1.2 icmp_seq=3 ttl=64 time=1.081 ms
+
+PC1> ping 10.3.1.3
+host (10.3.1.3) not reachable
+```
+
 - `pc3` ne ping plus personne
+
+```
+PC3> ping 10.3.1.1
+host (10.3.1.1) not reachable
+
+PC3> ping 10.3.1.2
+host (10.3.1.2) not reachable
+```
 
 ![i know cisco](./pics/i_know.jpeg)
 
@@ -137,7 +156,40 @@ On va ajouter une VM dans la topologie, histoire que vous voyiez cette aspect de
 - Rocky Linux, IP statique, nom défini à `dhcp.tp3.b2`, SELinux désactivé, firewall activé, système à jour, NORMAL LA ROUTINE QUOI
 - installez un serveur DHCP
   - il doit délivrer des IPs entre `10.3.1.100` et `10.3.1.200`
+
+```
+[joris@dhcptp3b2 ~]$ sudo cat /etc/dhcp/dhcpd.conf
+#
+# DHCP Server Configuration file.
+#   see /usr/share/doc/dhcp-server/dhcpd.conf.example
+#   see dhcpd.conf(5) man page
+#
+default-lease-time 900;
+max-lease-time 10800;
+
+authoritative;
+
+subnet 10.3.1.0 netmask 255.255.255.0 {
+range 10.3.1.100 10.3.1.200;
+option routers 10.3.1.254;
+option subnet-mask 255.255.255.0;
+option domain-name-servers 1.1.1.1;
+}
+```
+
 - vérifier avec le `pc4` que vous pouvez récupérer une IP en DHCP
+
+```
+PC4> ip dhcp -r
+DDORA IP 10.3.1.100/24 GW 10.3.1.254
+```
+
 - vérifier avec le `pc5` que vous ne pouvez PAS récupérer une IP en DHCP
+
+```
+PC5> ip dhcp -r
+DDD
+Can't find dhcp server
+```
 
 > Pour rappel, la trame DHCP Discover part en broadcast. Le switch bloque ça aussi, il bloque tout, il s'en fout de la nature de la trame : si ça passe d'un port taggé VLAN X à un port taggé VLAN Y, ça dégage.
