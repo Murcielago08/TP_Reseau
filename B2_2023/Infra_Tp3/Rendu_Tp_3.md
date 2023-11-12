@@ -112,6 +112,22 @@ PC1> ping 10.3.1.3
 - ajout des ports du switches dans le bon VLAN (voir [le tableau d'adressage de la topo 2 juste au dessus](#2-adressage-topologie-2))
   - ici, tous les ports sont en mode *access* : ils pointent vers des clients du réseau
 
+```
+IOU1#show vlan br
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Et1/2, Et1/3, Et2/0, Et2/1
+                                                Et2/2, Et2/3, Et3/0, Et3/1
+                                                Et3/2, Et3/3
+10   eleve                            active    Et0/1, Et0/2, Et1/0
+20   admin                            active    Et0/0, Et0/3, Et1/1
+1002 fddi-default                     act/unsup
+1003 token-ring-default               act/unsup
+1004 fddinet-default                  act/unsup
+1005 trnet-default                    act/unsup 
+```
+
 🌞 **Vérif**
 
 - `pc1` et `pc2` doivent toujours pouvoir se ping
