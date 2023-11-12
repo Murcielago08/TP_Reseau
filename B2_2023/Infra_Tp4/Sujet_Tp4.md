@@ -76,7 +76,7 @@ Il assurera son job de routeur traditionnel : router entre deux réseaux. Sauf q
 
 ## 1. Topologie 1
 
-![Topologie 1](../img/topo1.png)
+![Topologie 1](./img/topo1.png)
 
 ## 2. Adressage topologie 1
 
@@ -159,11 +159,11 @@ On va ajouter une fonctionnalité au routeur : le NAT.
 
 On va le connecter à internet (simulation du fait d'avoir une IP publique) et il va faire du NAT pour permettre à toutes les machines du réseau d'avoir un accès internet.
 
-![Yellow cable](../img/yellow-cable.png)
+![Yellow cable](./img/yellow-cable.png)
 
 ## 1. Topologie 2
 
-![Topologie 2](../img/topo2.png)
+![Topologie 2](./img/topo2.png)
 
 ## 2. Adressage topologie 2
 
@@ -215,7 +215,7 @@ On va en profiter pour setup un serveur DHCP pour les clients qui s'y trouvent.
 
 ## 1. Topologie 3
 
-![Topo 3](../img/topo3.png)
+![Topo 3](./img/topo3.png)
 
 ## 2. Adressage topologie 3
 
@@ -275,5 +275,5 @@ Vous pouvez partir de la topologie 2.
 
 > Faites ça sur n'importe quel VPCS que vous venez d'ajouter : `pc3` ou `pc4` ou `pc5`.
 
-![DC Archi](../img/dc_archi.png)
+![DC Archi](./img/dc_archi.png)
 
