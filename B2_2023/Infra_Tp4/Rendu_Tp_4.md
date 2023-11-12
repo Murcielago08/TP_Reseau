@@ -23,6 +23,7 @@ On va donc focus sur l'aspect routing/switching, avec du matériel Cisco. On va 
   - [2. Adressage topologie 2](#2-adressage-topologie-2)
   - [3. Setup topologie 2](#3-setup-topologie-2)
 - [III. Add a building](#iii-add-a-building)
+  - [1. Topologie 3](#1-topologie-3)
   - [2. Adressage topologie 3](#2-adressage-topologie-3)
   - [3. Setup topologie 3](#3-setup-topologie-3)
 
@@ -75,7 +76,7 @@ Il assurera son job de routeur traditionnel : router entre deux réseaux. Sauf q
 
 ## 1. Topologie 1
 
-![Topologie 1](../img/topo1.png)
+![Topologie 1](./img/topo1.png)
 
 ## 2. Adressage topologie 1
 
@@ -253,11 +254,11 @@ On va ajouter une fonctionnalité au routeur : le NAT.
 
 On va le connecter à internet (simulation du fait d'avoir une IP publique) et il va faire du NAT pour permettre à toutes les machines du réseau d'avoir un accès internet.
 
-![Yellow cable](../img/yellow-cable.png)
+
 
 ## 1. Topologie 2
 
-![Topologie 2](../img/topo2.png)
+![Topologie 2](./img/topo2.png)
 
 ## 2. Adressage topologie 2
 
@@ -386,6 +387,9 @@ On a acheté un nouveau bâtiment, faut tirer et configurer un nouveau switch ju
 
 On va en profiter pour setup un serveur DHCP pour les clients qui s'y trouvent.
 
+## 1. Topologie 3
+
+![Topologie 3](./img/topo3.png)
 
 ## 2. Adressage topologie 3
 
