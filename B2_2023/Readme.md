@@ -13,6 +13,8 @@
   - ## Infra
     - [TP3 : Premiers pas GNS, Cisco et VLAN](./Infra_Tp3/Tp_3.md)
     - [Rendu TP3 : Premiers pas GNS, Cisco et VLAN](./Infra_Tp3/Rendu_Tp_3.md)
+    - [TP4 :Router-on-a-stick](./Infra_Tp4/Sujet_Tp4.md)
+    - [Rendu TP4 :Router-on-a-stick](./Infra_Tp4/Rendu_Tp_4.md)
 
   - ## Sécu
     - [TP3 : SVP soyez cools](./Sécu-Tp3/Tp3.md)

@@ -36,6 +36,8 @@ Vous trouverez ici les ressources liées au cours de réseau de première année
   - ## Infra
     - [TP3 : Premiers pas GNS, Cisco et VLAN](./B2_2023/Infra_Tp3/Tp_3.md)
     - [Rendu TP3 : Premiers pas GNS, Cisco et VLAN](./B2_2023/Infra_Tp3/Rendu_Tp_3.md)
+    - [TP4 :Router-on-a-stick](./B2_2023/Infra_Tp4/Sujet_Tp4.md)
+    - [Rendu TP4 :Router-on-a-stick](./B2_2023/Infra_Tp4/Rendu_Tp_4.md)
 
   - ## Sécu
     - [TP3 : SVP soyez cools](./B2_2023/Sécu-Tp3/Tp3.md)
