@@ -1,6 +1,6 @@
-# B1 Réseau 2022
+# TP Réseau
 
-Vous trouverez ici les ressources liées au cours de réseau de première année.
+Vous trouverez ici les ressources liées au cours de réseau.
 
 # [Tp_B1_2022](./B1_2022/Readme.md)
 
