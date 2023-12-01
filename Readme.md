@@ -38,6 +38,10 @@ Vous trouverez ici les ressources liées au cours de réseau de première année
     - [Rendu TP3 : Premiers pas GNS, Cisco et VLAN](./B2_2023/Infra_Tp3/Rendu_Tp_3.md)
     - [TP4 :Router-on-a-stick](./B2_2023/Infra_Tp4/Sujet_Tp4.md)
     - [Rendu TP4 :Router-on-a-stick](./B2_2023/Infra_Tp4/Rendu_Tp_4.md)
+    - [TP5 : Intégration](/B2_2023/Infra_Tp5/Sujet_Tp5.md)
+    - [Rendu TP5 :Intégration](/B2_2023/Infra_Tp5/Rendu_Tp5.md)
+    - [TP6 : STP, OSPF, bigger infra](/B2_2023/Infra_Tp6/Sujet_Tp6.md)
+    - [Rendu TP6 : STP, OSPF, bigger infra](/B2_2023/Infra_Tp6/Rendu_Tp6.md)
 
   - ## Sécu
     - [TP3 : SVP soyez cools](./B2_2023/Sécu-Tp3/Tp3.md)
