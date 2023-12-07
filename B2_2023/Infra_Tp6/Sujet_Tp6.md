@@ -139,6 +139,7 @@ OSPF donc.
 - tous les routeurs doivent partager tous les réseaux auxquels ils sont connectés
 - un petit `show running-config` où vous enlevez ce que vous n'avez pas tapé pour le rendu !
 - et un `show ip ospf neighbor` + `show ip route` sur chaque routeur
+- n'oubliez pas de partager la route par défaut de R5 avec une commande OSPF spécifique [voir mémo](../../../cours/memo/cisco.md)
 
 > Référez-vous [au mémo Cisco](../../../cours/memo/cisco.md) pour les commandes OSPF.
 
