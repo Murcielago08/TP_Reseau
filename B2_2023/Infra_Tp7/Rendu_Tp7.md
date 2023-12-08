@@ -33,8 +33,6 @@ Au menu :
 
 Vu qu'on crée de la **redondance**, on finit le TP par shutdown des machines, débrancher des câbles (simulation de panne) et s'en foutre parce que tout est redondé ! :)
 
-![Redundancy](./img/redundancy.jpg)
-
 ## Sommaire
 
 - [TP7 INFRA : 3-tier architecture et redondance](#tp7-infra--3-tier-architecture-et-redondance)
@@ -63,7 +61,7 @@ Vu qu'on crée de la **redondance**, on finit le TP par shutdown des machines, d
 - que du VPCS
   - tu peux spawn des VMs à la place si tu préfères et que ton PC tolère
 
-Dans ce TP, pas d'étape préliminaire, on step-up, je vous donne l'archi, toutes les instructions, et vous vous démerdez !
+Dans ce TP, pas d'étape préliminaire, on step-up, je vous donne l'archi, toutes les instructions, et vous vous démerdez !****
 
 ## 1. Présentation archi
 
@@ -144,10 +142,44 @@ Dans ce TP, pas d'étape préliminaire, on step-up, je vous donne l'archi, toute
 
 🌞 **`show-run`** sur tous les équipements
 
+[TOUT les show run ^^](/B2_2023/Infra_Tp7/Show_run.md)
+
 🌞 **depuis `pc4.tp7.b1`**
 
 - `ping 10.7.10.12`
 - `ping ynov.com`
+
+```
+PC4> ping 1.1.1.1
+
+84 bytes from 1.1.1.1 icmp_seq=1 ttl=127 time=49.420 ms
+84 bytes from 1.1.1.1 icmp_seq=2 ttl=127 time=40.276 ms
+84 bytes from 1.1.1.1 icmp_seq=3 ttl=127 time=38.454 ms
+84 bytes from 1.1.1.1 icmp_seq=4 ttl=127 time=37.459 ms
+84 bytes from 1.1.1.1 icmp_seq=5 ttl=127 time=69.106 ms
+^C
+PC4> ping 10.7.20.11
+
+10.7.20.11 icmp_seq=1 timeout
+84 bytes from 10.7.20.11 icmp_seq=2 ttl=63 time=14.403 ms
+84 bytes from 10.7.20.11 icmp_seq=3 ttl=63 time=11.258 ms
+84 bytes from 10.7.20.11 icmp_seq=4 ttl=63 time=15.248 ms
+^C
+PC4> ping 10.7.20.12
+
+10.7.20.12 icmp_seq=1 timeout
+84 bytes from 10.7.20.12 icmp_seq=2 ttl=63 time=13.407 ms
+84 bytes from 10.7.20.12 icmp_seq=3 ttl=63 time=17.969 ms
+84 bytes from 10.7.20.12 icmp_seq=4 ttl=63 time=15.315 ms
+^C
+PC4> ping 10.7.30.11
+
+10.7.30.11 icmp_seq=1 timeout
+10.7.30.11 icmp_seq=2 timeout
+84 bytes from 10.7.30.11 icmp_seq=3 ttl=63 time=24.137 ms
+84 bytes from 10.7.30.11 icmp_seq=4 ttl=63 time=17.721 ms
+84 bytes from 10.7.30.11 icmp_seq=5 ttl=63 time=18.616 ms
+```
 
 ## 3. Bonus
 
