@@ -29,25 +29,41 @@ Vous trouverez ici les ressources liées au cours de réseau.
 - [TP2 : Environnement virtuel](./B2_2023/Tp_2.md)
 - [Rendu TP2 : Environnement virtuel](./B2_2023/Rendu_Tp_2.md)
 ---
-- TP's 3:
   - ## Dév
-    - [TP3 : Python et réseau](./B2_2023/Dev_Tp3/Tp3.md)
+    - [TP3 : Python et réseau](./B2_2023/Dev/Tp3/Sujet_Tp3.md)
+    ---
+    - [TP4 DEV : I'm Socketing, r u soketin ?](./B2_2023/Dev/Tp4/Sujet_Tp4.md)
+    ---
+    - [TP4 DEV : I'm Socketing, r u soketin ?](./B2_2023/Dev/Tp4/Sujet_Tp4.md)
+    ---
+    - [TP5 DEV : Coding Encoding Decoding](./B2_2023/Dev/Tp5/Sujet_Tp5.md)
+    ---
+    - [TP6 DEV : Chat room](./B2_2023/Dev/Tp6/Sujet_Tp6.md)
 
   - ## Infra
-    - [TP3 : Premiers pas GNS, Cisco et VLAN](./B2_2023/Infra_Tp3/Tp_3.md)
-    - [Rendu TP3 : Premiers pas GNS, Cisco et VLAN](./B2_2023/Infra_Tp3/Rendu_Tp_3.md)
+    - [TP3 : Premiers pas GNS, Cisco et VLAN](./B2_2023/Infra/Infra_Tp3/Tp_3.md)
+    - [Rendu TP3 : Premiers pas GNS, Cisco et VLAN](./B2_2023/Infra/Infra_Tp3/Rendu_Tp_3.md)
     ---
-    - [TP4 :Router-on-a-stick](./B2_2023/Infra_Tp4/Sujet_Tp4.md)
-    - [Rendu TP4 :Router-on-a-stick](./B2_2023/Infra_Tp4/Rendu_Tp_4.md)
+    - [TP4 :Router-on-a-stick](./B2_2023/Infra/Infra_Tp4/Sujet_Tp4.md)
+    - [Rendu TP4 :Router-on-a-stick](./B2_2023/Infra/Infra_Tp4/Rendu_Tp_4.md)
     ---
-    - [TP5 : Intégration](/B2_2023/Infra_Tp5/Sujet_Tp5.md)
-    - [Rendu TP5 :Intégration](/B2_2023/Infra_Tp5/Rendu_Tp5.md)
+    - [TP5 : Intégration](/B2_2023/Infra/Infra_Tp5/Sujet_Tp5.md)
+    - [Rendu TP5 :Intégration](/B2_2023/Infra/Infra_Tp5/Rendu_Tp5.md)
     ---
-    - [TP6 : STP, OSPF, bigger infra](/B2_2023/Infra_Tp6/Sujet_Tp6.md)
-    - [Rendu TP6 : STP, OSPF, bigger infra](/B2_2023/Infra_Tp6/Rendu_Tp6.md)
+    - [TP6 : STP, OSPF, bigger infra](/B2_2023/Infra/Infra_Tp6/Sujet_Tp6.md)
+    - [Rendu TP6 : STP, OSPF, bigger infra](/B2_2023/Infra/Infra_Tp6/Rendu_Tp6.md)
     ---
-    - [TP7 INFRA : 3-tier architecture et redondance](/B2_2023/Infra_Tp7/Sujet_Tp7.md)
-    - [Rendu TP7 INFRA : 3-tier architecture et redondance](/B2_2023/Infra_Tp7/Rendu_Tp7.md)
+    - [TP7 INFRA : 3-tier architecture et redondance](/B2_2023/Infra/Infra_Tp7/Sujet_Tp7.md)
+    - [Rendu TP7 INFRA : 3-tier architecture et redondance](/B2_2023/Infra/Infra_Tp7/Rendu_Tp7.md)
 
   - ## Sécu
-    - [TP3 : SVP soyez cools](./B2_2023/Sécu-Tp3/Tp3.md)
+    - [TP3 : SVP soyez cools](./B2_2023/Sécu/Tp3/Sujet_Tp3.md)
+    ---
+    - [TP4 SECU : Exfiltration](./B2_2023/Sécu/Tp4/Sujet_Tp4.md)
+    ---
+    - [TP5 SECU : Exploit, pwn, fix](./B2_2023/Sécu/Tp5/Sujet_Tp5.md)
+      - [Remédiations Calculatrice](./B2_2023/Sécu/Tp5/mitigate.md) 
+    ---
+    - [TP6 : Un peu de root-me](./B2_2023/Sécu/Tp6/Sujet_Tp6.md)
+
+
