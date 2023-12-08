@@ -45,6 +45,9 @@ Vous trouverez ici les ressources liées au cours de réseau.
     ---
     - [TP6 : STP, OSPF, bigger infra](/B2_2023/Infra_Tp6/Sujet_Tp6.md)
     - [Rendu TP6 : STP, OSPF, bigger infra](/B2_2023/Infra_Tp6/Rendu_Tp6.md)
+    ---
+    - [TP7 INFRA : 3-tier architecture et redondance](/B2_2023/Infra_Tp7/Sujet_Tp7.md)
+    - [Rendu TP7 INFRA : 3-tier architecture et redondance](/B2_2023/Infra_Tp7/Rendu_Tp7.md)
 
   - ## Sécu
     - [TP3 : SVP soyez cools](./B2_2023/Sécu-Tp3/Tp3.md)
