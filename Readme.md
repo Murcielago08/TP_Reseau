@@ -55,6 +55,9 @@ Vous trouverez ici les ressources liées au cours de réseau.
     ---
     - [TP7 INFRA : 3-tier architecture et redondance](/B2_2023/Infra/Infra_Tp7/Sujet_Tp7.md)
     - [Rendu TP7 INFRA : 3-tier architecture et redondance](/B2_2023/Infra/Infra_Tp7/Rendu_Tp7.md)
+    ---
+    - [TP8 INFRA : Make ur own](./B2_2023/Infra/Infra_Tp8/Sujet_Tp8.md) 
+    - [Rendu TP8 INFRA : Make ur own](./B2_2023/Infra/Infra_Tp8/Rendu_Tp8.md) 
 
   - ## Sécu
     - [TP3 : SVP soyez cools](./B2_2023/Sécu/Tp3/Sujet_Tp3.md)

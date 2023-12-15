@@ -32,6 +32,9 @@
     ---
     - [TP7 INFRA : 3-tier architecture et redondance](./Infra/Infra_Tp7/Sujet_Tp7.md)
     - [Rendu TP7 INFRA : 3-tier architecture et redondance](./Infra/Infra_Tp7/Rendu_Tp7.md)
+    ---
+    - [TP8 INFRA : Make ur own](./Infra/Infra_Tp8/Sujet_Tp8.md) 
+    - [Rendu TP8 INFRA : Make ur own](./Infra/Infra_Tp8/Rendu_Tp8.md) 
 
   - ## Sécu
     - [TP3 : SVP soyez cools](./Sécu/Tp3/Sujet_Tp3.md)
