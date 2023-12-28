@@ -288,8 +288,8 @@ On est paranos un peu alors il n'y a pas de WiFi dans nos locaux, et on fournit 
 | `Tel14` | ❌ | ❌ | ❌ | ❌ | ❌ | `10.1.60.15` | ❌ |
 | `Tel21` | ❌ | ❌ | ❌ | ❌ | ❌ | `10.1.60.16` | ❌ |
 | ----------------- | ----------------- | ---------------- | ----------------- | ----------------- | ---------------- | ----------------- | ----------------- |
-| `dhcp.tp8.site1` | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | `10.1.140.253` |
-| `dns.tp8.site1` | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | `10.1.140.252` |
+| `dhcp.tp8.site1` | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | `10.1.140.252` |
+| `dns.tp8.site1` | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | `10.1.140.251` |
 
 ### B. Tableau des VLANs 🍷 Site "Meow Origins"
 
@@ -399,7 +399,7 @@ On est paranos un peu alors il n'y a pas de WiFi dans nos locaux, et on fournit 
 | `Tel19` | ❌ | ❌ | ❌ | ❌ | ❌ | `10.2.120.5` | ❌ |
 | `Tel20` | ❌ | ❌ | ❌ | ❌ | ❌ | `10.2.120.6` | ❌ |
 | ----------------- | ----------------- | ---------------- | ----------------- | ----------------- | ---------------- | ----------------- | ----------------- |
-| `dhcp.tp8.site2` | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | `10.2.130.253` |
+| `dhcp.tp8.site2` | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | `10.2.130.252` |
 ### D. Tableau des VLANs 🚀 Site "Meow and Beyond"
 
 - Association VLAN <> réseau IP
@@ -453,6 +453,5 @@ On est paranos un peu alors il n'y a pas de WiFi dans nos locaux, et on fournit 
 - la suite des étapes pour les machines Linux
   - vous ne configurez QUE le serveur DHCP et DNS pour la partie Linux
   - le reste est simulé avec VPCS ou VM vierge (production, tests, serveur git, etc.)
-- démonstration de skill
-  - si vous avez des confs stylées c'est l'heure de les montrer
-  - élégance, perfs, sécurité, qualité, clarté, on prend tout
+
+[show-run switch/routeur](./show-run.md)
